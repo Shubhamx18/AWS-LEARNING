@@ -4,5 +4,3 @@ This repository contains my hands-on practice with various AWS services. It is s
 
 ---
 
-## Repository Structure
-
