@@ -386,15 +386,29 @@ AWS services are categorized based on how much control you have over the infrast
 
 
 
-| Service           | Type       | Description                               |
-|------------------|-----------|-------------------------------------------|
-| **EC2**           | IaaS      | Virtual servers for apps and websites     |
-| **S3**            | IaaS      | Scalable object storage for files/data   |
-| **RDS**           | PaaS      | Managed relational databases             |
-| **Lambda**        | FaaS      | Run serverless code in response to events|
-| **VPC**           | IaaS      | Isolated virtual network for resources  |
-| **CloudFront**    | CDN       | Global content delivery network          |
-| **IAM**           | Security  | Manage users, roles, and permissions    |
-| **DynamoDB**      | PaaS      | Fully managed NoSQL database             |
-| **Elastic Beanstalk** | PaaS  | Deploy and scale web apps easily         |
-| **CloudWatch**    | Monitoring| Monitor resources, logs, and alerts     |
+| Service | Type | Description |
+
+|---------|------|-------------|
+
+| \*\*EC2\*\* | IaaS | Virtual servers for apps and websites |
+
+| \*\*S3\*\* | IaaS | Scalable object storage for files/data |
+
+| \*\*RDS\*\* | PaaS | Managed relational databases |
+
+| \*\*Lambda\*\* | FaaS | Run serverless code in response to events |
+
+| \*\*VPC\*\* | IaaS | Isolated virtual network for resources |
+
+| \*\*CloudFront\*\* | CDN | Global content delivery network |
+
+| \*\*IAM\*\* | Security | Manage users, roles, and permissions |
+
+| \*\*DynamoDB\*\* | PaaS | Fully managed NoSQL database |
+
+| \*\*Elastic Beanstalk\*\* | PaaS | Deploy and scale web apps easily |
+
+| \*\*CloudWatch\*\* | Monitoring | Monitor resources, logs, and alerts |
+
+
+
