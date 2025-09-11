@@ -1,0 +1,96 @@
+# Day-5: AWS EBS (Elastic Block Store) - Description
+
+## 1. Introduction
+Amazon **EBS (Elastic Block Store)** is a type of storage service provided by AWS.  
+Think of it like a **hard disk drive (HDD) or solid-state drive (SSD)** that you can attach to your **Amazon EC2 instances**.  
+The special thing about EBS is that your data is **not lost** even if you stop or restart your EC2 instance.  
+
+EBS volumes are created in a specific **Availability Zone (AZ)** and must be attached to an EC2 instance in the same AZ.  
+They can be detached from one EC2 and attached to another when needed.  
+
+---
+
+## 2. Why Use EBS?
+- To store data that must **persist** after an EC2 instance is stopped.  
+- To run applications like **databases, web servers, or analytics workloads**.  
+- To easily take **backups** using snapshots.  
+- To scale storage **independently of compute power**.  
+
+---
+
+## 3. Key Features
+- **Persistent Storage**: Data is saved even if the EC2 instance is stopped or restarted.  
+- **Highly Available**: Data is replicated automatically within the AZ for reliability.  
+- **Scalable**: You can start from 1 GB and go up to 16 TB per volume.  
+- **Snapshots**: You can create a backup (snapshot) at any point in time.  
+- **Attach/Detach**: You can attach an EBS volume to a running instance or detach it when not needed.  
+
+---
+
+## 4. Volume Types
+Amazon EBS provides different volume types depending on use case:
+
+1. **gp3 (General Purpose SSD)**  
+   - Default volume type.  
+   - Good balance of cost and performance.  
+   - Used for most workloads like websites, dev/test, general apps.  
+
+2. **io1 / io2 (Provisioned IOPS SSD)**  
+   - High-performance SSD volumes.  
+   - Provide high IOPS (Input/Output Operations per Second).  
+   - Best for **databases** and **critical enterprise applications**.  
+
+3. **st1 (Throughput Optimized HDD)**  
+   - Low-cost HDD with good throughput.  
+   - Suitable for **big data, data warehousing, and log processing**.  
+
+4. **sc1 (Cold HDD)**  
+   - Very cheap HDD storage.  
+   - For data that is rarely accessed (like backups or archives).  
+
+---
+
+## 5. Snapshots
+- A **snapshot** is a **backup** of an EBS volume at a certain point in time.  
+- Snapshots are stored in **Amazon S3** (internally managed by AWS).  
+- You can use snapshots to:
+  - Restore a volume after data loss.  
+  - Create new volumes.  
+  - Create an **AMI (Amazon Machine Image)**.  
+- Snapshots are **incremental**: only changes since the last snapshot are saved, saving space and cost.  
+
+---
+
+## 6. Common Use Cases
+- Root volume for EC2 instances (stores operating system and files).  
+- Storage for **applications** (websites, software).  
+- **Databases** like MySQL, MongoDB, PostgreSQL.  
+- Backup and recovery.  
+- Big data and analytics.  
+
+---
+
+## 7. Pricing
+You pay for:
+- **Volume size (GB per month)**  
+- **Snapshot storage (GB per month)**  
+- **Provisioned IOPS** (if using high-performance volumes like io1/io2)  
+
+---
+
+## 8. Important AWS CLI Commands
+```bash
+# Create volume
+aws ec2 create-volume --availability-zone us-east-1a --size 10 --volume-type gp3
+
+# Attach volume
+aws ec2 attach-volume --volume-id vol-xxxx --instance-id i-xxxx --device /dev/xvdf
+
+# Detach volume
+aws ec2 detach-volume --volume-id vol-xxxx
+
+# Delete volume
+aws ec2 delete-volume --volume-id vol-xxxx
+
+# Create snapshot
+aws ec2 create-snapshot --volume-id vol-xxxx --description "Backup snapshot"
